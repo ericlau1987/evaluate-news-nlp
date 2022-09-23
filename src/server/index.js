@@ -4,15 +4,13 @@ dotenv.config();
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
-
+const { getAPIResult } = require('./checkAPI');
 
 const app = express()
 
 console.log(`Your API key is ${process.env.API_KEY}`);
 
-var textapi = new aylien({
-    application_key: process.env.API_KEY
-    });
+const application_key = process.env
     
 app.use(express.static('dist'))
 
@@ -28,6 +26,4 @@ app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
-app.get('/check', function (req, res) {
-    res.send(mockAPIResponse)
-})
+app.post('/check', getAPIResult)
