@@ -1,6 +1,8 @@
 const { isValidURL } = require('./checkValidURL')
+const { fetchData } = require('/fetchData')
+const { showResults } = require('./updateResult')
 
-function handleSubmit(event) {
+const handleSubmit = async (event) => {
     event.preventDefault()
 
     // check what text was put into the form field
@@ -9,20 +11,12 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::")
 
     if (isValidURL(urlInput)) {
-        fetch('http://localhost:8080/check')
-        .then(res => res.json())
-        .then(function(res) {
-            document.getElementById('results').innerHTML = res.message
-    })
+        const data = await fetchData('http://localhost:8080/check', {url: urlInput})
+        showResults({data})
+
     } else {
         alert("Please provide a valid url.")
     }
-
-    fetch('http://localhost:8080/check')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
 }
 
 export { handleSubmit }
