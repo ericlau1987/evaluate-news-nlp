@@ -14,24 +14,28 @@
 
         <header>
             <div class="">
-                Logo
+                Article or Websites NLP analysis 
             </div>
             <div class="">
-                navigation
+                
             </div>
         </header>
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form class="">
+                    <input id="name" type="text" name="input" value="" placeholder="Name">
+                    <input id="submitButton" type="submit" name="" value="submit">
                 </form>
             </section>
 
             <section>
                 <strong>Form Results:</strong>
-                <div id="results"></div>
+                <div id="agreement"></div>
+                <div id="subjectivity"></div>
+                <div id="confidence"></div>
+                <div id="irony"></div>
+                <div id="score_tag"></div>
             </section>
         </main>
 
@@ -41,3 +45,12 @@
 
     </body>
 </html>
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+   </script>

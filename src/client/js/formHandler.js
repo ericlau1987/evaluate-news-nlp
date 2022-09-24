@@ -1,16 +1,22 @@
-function handleSubmit(event) {
+const { isValidURL } = require('./checkValidURL')
+const { fetchData } = require('./fetchData')
+const { showResult } = require('./updateResult')
+
+const handleSubmit = async (event) => {
     event.preventDefault()
 
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
+    let urlInput = document.getElementById('name').value
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+
+    if (isValidURL(urlInput)) {
+        const data = await fetchData('http://localhost:8080/check', {url: urlInput});
+        showResult({data});
+
+    } else {
+        alert("Please provide a valid url.")
+    }
 }
 
 export { handleSubmit }
