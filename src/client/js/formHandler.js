@@ -1,6 +1,6 @@
 const { isValidURL } = require('./checkValidURL')
 const { fetchData } = require('./fetchData')
-const { showResults } = require('./updateResult')
+const { showResult } = require('./updateResult')
 
 const handleSubmit = async (event) => {
     event.preventDefault()

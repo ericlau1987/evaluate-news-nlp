@@ -3,7 +3,7 @@ const fetchData = async (url = '', data = { url: '' }) => {
     const response = await fetch(url, {
       method: 'POST',
       credentials: 'same-origin',
-      mode: 'cors',
+      // mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
