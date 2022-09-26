@@ -29,8 +29,9 @@ app.get('/', function (req, res) {
 app.post('/check', getAPIResult)
 
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
+const ports = 8081
+app.listen(ports, function () {
+    console.log(`Example app listening on port ${ports}!`)
 })
 
 

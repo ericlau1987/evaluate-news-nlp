@@ -11,7 +11,7 @@ const handleSubmit = async (event) => {
     console.log("::: Form Submitted :::")
 
     if (isValidURL(urlInput)) {
-        const data = await fetchData('http://localhost:8080/check', {url: urlInput});
+        const data = await fetchData('http://localhost:8081/check', {url: urlInput});
         showResult({data});
 
     } else {
